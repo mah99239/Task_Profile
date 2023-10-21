@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/nav_profile_fragment">
+
+    <fragment
+        android:id="@+id/nav_profile_fragment"
+        android:name="com.mz.profile.presentation.ui.ProfileFragment"
+        android:label="@string/profile_name"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/action_nav_profile_fragment_to_nav_album_photos_fragment"
+            app:destination="@id/nav_album_photos_fragment" >
+
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_album_photos_fragment"
+        android:name="com.mz.profile.presentation.ui.AlbumPhotosFragment"
+        android:label="@string/album_photos_name"
+        tools:layout="@layout/fragment_album_photos" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_nav_album_photo_to_nav_photos_fragment"
+            app:destination="@id/nav_photos_fragment" >
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_photos_fragment"
+        android:name="com.mz.profile.presentation.ui.PhotosFragment"
+        android:label="@string/photo_name"
+        tools:layout="@layout/fragment_album_photos" />
+</navigation>

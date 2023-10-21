@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mz.profile.presentation.viewmodel.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/csl_profile_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_profile_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/normal_spacing" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_profile_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/normal_spacing" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_profile_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/normal_spacing" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_profile_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/normal_spacing" />
+
+        <TextView
+            android:id="@+id/tv_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.user.name}"
+            android:textAppearance="@style/TextAppearance.app.TitleSmall"
+            app:layout_constraintStart_toStartOf="@+id/gl_profile_left"
+            app:layout_constraintTop_toTopOf="@+id/gl_profile_top"
+            tools:text="Leanne Graham" />
+
+        <TextView
+            android:id="@+id/tv_profile_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_spacing"
+            android:text="@{viewModel.user.address.getAddressWithStreetCity()}"
+            android:textAppearance="@style/TextAppearance.app.BodySmall"
+
+            app:layout_constraintStart_toStartOf="@+id/gl_profile_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile_name"
+            tools:text="Kules Light, Apt. 565, Gfas" />
+
+        <TextView
+            android:id="@+id/tv_profile_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/smaller_spacing"
+            android:text="@{viewModel.user.phone}"
+
+            android:textAppearance="@style/TextAppearance.app.BodySmall"
+            app:layout_constraintStart_toStartOf="@+id/gl_profile_left"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile_address"
+            tools:text="234222222222" />
+
+        <TextView
+            android:id="@+id/tv_profile_album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_spacing"
+            android:textAppearance="@style/TextAppearance.app.BodyMedium"
+            app:layout_constraintStart_toStartOf="@+id/gl_profile_left"
+
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile_phone"
+            android:text="@string/my_albums" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProfile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/small_spacing"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/gl_profile_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/gl_profile_right"
+            app:layout_constraintStart_toStartOf="@+id/gl_profile_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile_album"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_album" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/pi_add_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoading() ? View.INVISIBLE : View.VISIBLE}"
+
+            app:constraint_referenced_ids="rvProfile,tv_profile_name,tv_profile_address,tv_profile_phone,tv_profile_album" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+<!--
+            android:visibility="@{viewModel.isLoading() ? View.INVISIBLE : View.VISIBLE }"
+-->

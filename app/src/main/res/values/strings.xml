@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name" translatable="false">Bosta</string>
+
+    <string name="profile_name">Profile</string>
+    <string name="album_photos_name">Album</string>
+    <string name="photo_name">Photo</string>
+    <string name="network_error">Check your internet connection Please</string>
+    <string name="network_available">back online</string>
+    <string name="search_in_images">Search in images</string>
+    <string name="my_albums">My Albums</string>
+    <string name="share">Share</string>
+</resources>

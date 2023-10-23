@@ -12,6 +12,11 @@
             type="com.mz.profile.presentation.viewmodel.ProfileViewModel" />
     </data>
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/csl_profile_root"
         android:layout_width="match_parent"
@@ -124,7 +129,20 @@
 
             app:constraint_referenced_ids="rvProfile,tv_profile_name,tv_profile_address,tv_profile_phone,tv_profile_album" />
 
+        <ImageView
+            android:id="@+id/img_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_network_error"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/gl_profile_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/gl_profile_right"
+            app:layout_constraintStart_toStartOf="@+id/gl_profile_left"
+            app:layout_constraintTop_toBottomOf="@+id/gl_profile_top"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
 <!--
             android:visibility="@{viewModel.isLoading() ? View.INVISIBLE : View.VISIBLE }"

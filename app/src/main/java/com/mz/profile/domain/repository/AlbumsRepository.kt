@@ -5,7 +5,7 @@ import com.mz.profile.domain.model.Album
 import kotlinx.coroutines.flow.Flow
 
 
-interface AlbumsRepository {
+fun interface AlbumsRepository {
     fun getAlbums(userId: Int): Flow<Resource<List<Album>>>
 
 }

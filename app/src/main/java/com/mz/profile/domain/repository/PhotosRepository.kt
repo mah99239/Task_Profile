@@ -5,7 +5,7 @@ import com.mz.profile.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 
- interface PhotosRepository {
+ fun interface PhotosRepository {
 
     fun getPhotos(albumId: Int): Flow<Resource<List<Photo>>>
 

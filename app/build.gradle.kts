@@ -79,6 +79,7 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+    implementation (libs.swiperefreshlayout)
 
     implementation(libs.timber)
     // Moshi
@@ -88,10 +89,8 @@ dependencies {
     implementation(libs.retrofit.converter)
     implementation(libs.converter.gson)
 
-    implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
 
     // Retrofit with Moshi Converter
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation(libs.retrofit2.kotlin.coroutines.adapter)
 
     implementation(libs.hilt.android)
@@ -99,9 +98,10 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.picasso)
-
-
+    
+    implementation(libs.coil)
+    
+    
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

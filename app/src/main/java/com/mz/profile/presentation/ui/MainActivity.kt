@@ -3,12 +3,15 @@ package com.mz.profile.presentation.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.mz.profile.R
 import com.mz.profile.databinding.ActivityMainBinding
 import com.mz.profile.presentation.utils.NetworkConnection
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -45,26 +48,28 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun observerViewModel(){
-
-        networkConnection.isAvailable.observe(this){
-            binding.isAvailable = it
-            Timber.d("IsAvailable = $it")
-        }
-        binding.executePendingBindings()
+    private fun observerViewModel()
+    {
+        
+            
+            lifecycleScope.launch {
+                networkConnection.isAvailable.collect {
+                    binding.isAvailable = it
+                    Timber.d("IsAvailable = $it")
+                }
+            }
+        
     }
 
     override fun onStart() {
         super.onStart()
-        networkConnection.onActive()
+        
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-
-        removeObservers()
-        networkConnection.onInactive()
+        networkConnection.onDestroy()
         _binding = null
 
     }

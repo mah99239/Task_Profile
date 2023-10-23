@@ -32,11 +32,9 @@ class ProfileViewModel @Inject constructor(
 
 
 
-    init {
-        getUsers()
-    }
+  
 
-    private fun getUsers() = viewModelScope.launch {
+     fun getUsers() = viewModelScope.launch {
         showProgress()
 
         getUsersUseCase.invoke().collect { usersResponse ->
@@ -51,10 +49,7 @@ class ProfileViewModel @Inject constructor(
                         Timber.e("getUsers:Success")
 
                         _users.value = usersResponse.data
-                        val userRandom = _users.value?.random()
-                        _user.value = userRandom!!
-                        _userId.value = user.value?.id
-                        getAlbums()
+                       getRandomUser()
                     }
 
                     is Resource.Error -> {
@@ -73,8 +68,17 @@ class ProfileViewModel @Inject constructor(
 
 
     }
-
-    private fun getAlbums() {
+   
+    fun getRandomUser()
+   {
+      val userRandom = _users.value?.random()
+      _user.value = userRandom !!
+      _userId.value = user.value?.id
+      getAlbums()
+      
+   }
+   
+   private fun getAlbums() {
 
 
         viewModelScope.launch {

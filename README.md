@@ -1,4 +1,4 @@
-This is a simple Android app that demonstrates MVVM architecture, and clean arch Retrofit 2, Hilt dagger, Coroutines, and Coil. The app has two screens:
+This is a simple Android app that demonstrates MVVM architecture, and clean arch Retrofit 2, Hilt Dagger, Coroutines, and Coil. The app has two screens:
 
 Profile screen: This screen shows the user's name, address, and a list of their albums.
 Album details screen: This screen shows a list of photos in the selected album.
@@ -21,7 +21,7 @@ Design patterns:
 
 The app uses the following design patterns:
 
-MVVM architecture: The app uses the MVVM architecture to separate the view, model, and view model layers. This makes the app more modular and easier to test.
+MVVM architecture: The app uses the MVVM architecture to separate the view, model, and domain, and view model layers. This makes the app more modular and easier to test.
 Repository pattern: The app uses the repository pattern to abstract away the details of retrieving data from the API. This makes the app more flexible and easier to maintain.
 Dependency injection: The app uses Hilt dagger for dependency injection. This makes the app more modular and easier to test.
 Third-party libraries:
